@@ -34,7 +34,7 @@
                                 <div class="form-group row align-items-center" style="margin-top: 0.8em;"> 
                                     <label class="txt col-md-4 col-form-label text-md-right">Password</label>
                                     <div class="col-md-8">
-                                        <input type="password" name="password" value="" class="form-control" required/>
+                                        <input type="password" name="password" value="" class="form-control" minlength="6" required/>
                                     </div>
                                 </div>
                                 <div class="form-group" style="float: right; margin-top: 2%;">

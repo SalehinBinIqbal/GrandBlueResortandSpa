@@ -82,7 +82,7 @@
                                                 <div class="form-group"> 
                                                     <!-- <label class="text" style="float: left; margin-right: 0.5em; transform: translateY(0.45em);">Member ID</label> -->
                                                     <input style="max-width: 14.5em; float: left; margin-right: 0.5em;" type="text" name="id" placeholder="Member ID" value="" class="form-control" required/>
-                                                    <input style="max-width: 14.5em; float: left; margin-right: 0.5em;" type="password" name="password" placeholder="Password" value="" class="form-control" required/>
+                                                    <input style="max-width: 14.5em; float: left; margin-right: 0.5em;" type="password" name="password" placeholder="Password" value="" class="form-control" minlength="6" required/>
                                                     <input  name="submitmem" type="submit"  value="Login" class="btn btn-success text"/>
                                                 </div>
                                             </form>

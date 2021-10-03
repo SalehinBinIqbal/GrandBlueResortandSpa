@@ -210,17 +210,17 @@
     
                 <div class="form-group mb-3"> 
                   <label  class="txt">Current Password</label>
-                  <input type="password" autocomplete="off" name="curpass" value="" class="form-control txt" required>
+                  <input type="password" autocomplete="off" name="curpass" value="" class="form-control txt" minlength="6" required>
                 </div>
                 
                 <div class="form-group mb-3"> 
                   <label  class="txt">New Password</label>
-                  <input type="password" autocomplete="off" name="newpass" value="" class="form-control txt" required>
+                  <input type="password" autocomplete="off" name="newpass" value="" class="form-control txt" minlength="6" required>
                 </div>
 
                 <div class="form-group mb-3"> 
                   <label  class="txt">Confirm Password</label>
-                  <input type="password" autocomplete="off" name="conpass" value="" class="form-control txt" required>
+                  <input type="password" autocomplete="off" name="conpass" value="" class="form-control txt" minlength="6" required>
                 </div>
 
                 <div class="form-group mb-3" style="float: right;"> 
