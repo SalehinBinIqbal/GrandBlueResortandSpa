@@ -61,7 +61,6 @@
         <div class="maincontent">
             <div class="container">
                 <div class="row align-items-center">
-
                     <div class="col-sm-6">
                         <div class="card mb-3" style="max-width: 100%;">
                             <div class="row g-0">
