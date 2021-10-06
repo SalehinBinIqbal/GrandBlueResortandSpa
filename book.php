@@ -222,7 +222,7 @@
                                             </form>
                                             <?php                                
                                                 if(isset($error)){
-                                                    echo '<p style="color: red ; margin-bottom:0; ">'.$error.'</p>';
+                                                    echo '<p style="color: #c00715; margin-bottom:0; margin-top: 0.5em;">'.$error.'</p>';
                                                                                  
                                                 }                                                              
                                              ?>
