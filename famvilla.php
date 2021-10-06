@@ -123,7 +123,6 @@
                                     <img src="<?php echo $data['img_path']; ?>" class="d-block w-100" alt="...">   
                             
                         <?php } ?>
-                        <!-- <img src="images/Rooms & Suites/FamilyVilla/banner_famvilla.png" class="d-block w-100" alt="..."> -->
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
@@ -179,7 +178,6 @@
                                     <img src="<?php echo $data['img_path']; ?>" width="100%" alt="">   
                             
                         <?php } ?>
-                            <!-- <img src="images/Rooms & Suites/FamilyVilla/Villa2.jpg" width="100%" alt=""> -->
                         </a>
                     </div>
                     <div class="row row-cols-1 allsmallroompics">
@@ -191,7 +189,6 @@
                                     <img class="smallimg" src="<?php echo $data['img_path']; ?>" width="100%" alt="">   
                             
                         <?php } ?>
-                                <!-- <img class="smallimg" src="images/Rooms & Suites/FamilyVilla/Villa2_1.jpg" width="100%" alt=""> -->
                             </a>
                         </div>
                         <div class="col-sm-4 roompics">
@@ -202,7 +199,6 @@
                                     <img class="smallimg" src="<?php echo $data['img_path']; ?>" width="100%" alt="">   
                             
                         <?php } ?>
-                                <!-- <img class="smallimg" src="images/Rooms & Suites/FamilyVilla/Villa2_2.jpg" width="100%" alt=""> -->
                             </a>
                         </div>
                         <div class="col-sm-4 roompics">
@@ -213,7 +209,6 @@
                                     <img class="smallimg" src="<?php echo $data['img_path']; ?>" width="100%" alt="">   
                             
                             <?php } ?>
-                                <!-- <img class="smallimg" src="images/Rooms & Suites/FamilyVilla/Villa2_3.jpg" width="100%" alt=""> -->
                             </a>
                         </div>
                         <div class="col-sm-4 roompics">
@@ -224,7 +219,6 @@
                                     <img class="smallimg" src="<?php echo $data['img_path']; ?>" width="100%" alt="">   
                             
                         <?php } ?>
-                                <!-- <img class="smallimg" src="images/Rooms & Suites/FamilyVilla/Villa2_4.jpg" width="100%" alt=""> -->
                             </a>
                         </div>
                         <div class="col-sm-4 roompics">
@@ -235,7 +229,6 @@
                                     <img class="smallimg" src="<?php echo $data['img_path']; ?>" width="100%" alt="">   
                             
                         <?php } ?>
-                                <!-- <img class="smallimg" src="images/Rooms & Suites/FamilyVilla/Villa2_5.jpg" width="100%" alt=""> -->
                             </a>
                         </div>
                         <div class="col-sm-4 roompics">
@@ -246,7 +239,6 @@
                                     <img class="smallimg" src="<?php echo $data['img_path']; ?>" width="100%" alt="">   
                             
                         <?php } ?>
-                                <!-- <img class="smallimg" src="images/Rooms & Suites/FamilyVilla/Villa2_6.jpg" width="100%" alt=""> -->
                             </a>
                         </div>
                         <div class="col-sm-4 roompics">
@@ -257,7 +249,6 @@
                                     <img class="smallimg" src="<?php echo $data['img_path']; ?>" width="100%" alt="">   
                             
                             <?php } ?>
-                                <!-- <img class="smallimg" src="images/Rooms & Suites/FamilyVilla/Villa2_7.jpg" width="100%" alt=""> -->
                             </a>
                         </div>
                         <div class="col-sm-4 roompics">
@@ -268,7 +259,6 @@
                                     <img class="smallimg" src="<?php echo $data['img_path']; ?>" width="100%" alt="">   
                             
                             <?php } ?>
-                                <!-- <img class="smallimg" src="images/Rooms & Suites/FamilyVilla/Villa2_8.jpg" width="100%" alt=""> -->
                             </a>
                         </div>
                         <div class="col-sm-4 roompics">
@@ -279,7 +269,6 @@
                                     <img class="smallimg" src="<?php echo $data['img_path']; ?>" width="100%" alt="">   
                             
                             <?php } ?>
-                                <!-- <img class="smallimg" src="images/Rooms & Suites/FamilyVilla/Villa2_9.jpg" width="100%" alt=""> -->
                             </a>
                         </div>
                     </div>
@@ -367,7 +356,6 @@
                                     <img  src="<?php echo $data['img_path']; ?>" width="100%" alt="">   
                             
                             <?php } ?>
-                            <!-- <img src="images/Rooms & Suites/FamilyVilla/Villa2_10.jpg" width="100%"  alt=""> -->
                         </div>
                     </div>
                 </div>

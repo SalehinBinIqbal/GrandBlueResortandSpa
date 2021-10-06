@@ -20,19 +20,19 @@
             $message=$_POST['message'];
         }        
             $sql = "INSERT INTO contact_tbl (user_name, user_email, user_mobile, user_msg)VALUES ('$name', '$email', '$phone', '$message')";
-            // mysqli_query($link,$sql);
+            
             $resultInsert = mysqli_query ($link, $sql) or die( mysqli_error ($link));
-        }
-        if (!isset($_SESSION)) {
-            session_start();
-        }
+    }
+    if (!isset($_SESSION)) {
+        session_start();
+    }
         
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-          $_SESSION['postdata'] = $_POST;
-          unset($_POST);
-          header("Location: ".$_SERVER['PHP_SELF']);
-          exit;                          
-        }   
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $_SESSION['postdata'] = $_POST;
+        unset($_POST);
+        header("Location: ".$_SERVER['PHP_SELF']);
+        exit;                          
+    }   
 ?>
 
 

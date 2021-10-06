@@ -124,9 +124,7 @@
                                 {  ?>           
                                     <img src="<?php echo $data['img_path'] ?>" class="d-block w-100" alt="...">   
                             
-                        <?php } ?>    
-                    
-                    <!-- <img src="images/Rooms & Suites/OceanSideVilla/banner_villa.png" class="d-block w-100" alt="..."> -->
+                        <?php } ?>
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
@@ -182,7 +180,6 @@
                                     <img src="<?php echo $data['img_path'] ?>" width="100%" alt="">  
                             
                         <?php } ?>
-                            <!-- <img src="images/Rooms & Suites/OceanSideVilla/Villa.png" width="100%" alt=""> -->
                         </a>
                     </div>
                     <div class="row row-cols-1 allsmallroompics">
@@ -194,8 +191,6 @@
                                     <img class="smallimg" src="<?php echo $data['img_path'] ?>" width="100%" alt="">  
                             
                             <?php } ?>
-
-                                <!-- <img class="smallimg" src="images/Rooms & Suites/OceanSideVilla/Villa1.jpg" width="100%" alt=""> -->
                             </a>
                         </div>
                         <div class="col-sm-4 roompics">
@@ -206,7 +201,6 @@
                                     <img class="smallimg" src="<?php echo $data['img_path'] ?>" width="100%" alt="">  
                             
                             <?php } ?>
-                                <!-- <img class="smallimg" src="images/Rooms & Suites/OceanSideVilla/Villa1_1.jpg" width="100%" alt=""> -->
                             </a>
                         </div>
                         <div class="col-sm-4 roompics">
@@ -217,7 +211,6 @@
                                     <img class="smallimg" src="<?php echo $data['img_path'] ?>" width="100%" alt="">  
                             
                             <?php } ?>
-                                <!-- <img class="smallimg" src="images/Rooms & Suites/OceanSideVilla/Villa1_2.png" width="100%" alt=""> -->
                             </a>
                         </div>
                         <div class="col-sm-4 roompics">
@@ -228,7 +221,6 @@
                                     <img class="smallimg" src="<?php echo $data['img_path'] ?>" width="100%" alt="">  
                             
                             <?php } ?>
-                                <!-- <img class="smallimg" src="images/Rooms & Suites/OceanSideVilla/Villa1_3.jpg" width="100%" alt=""> -->
                             </a>
                         </div>
                         <div class="col-sm-4 roompics">
@@ -239,7 +231,6 @@
                                     <img class="smallimg" src="<?php echo $data['img_path'] ?>" width="100%" alt="">  
                             
                             <?php } ?>
-                                <!-- <img class="smallimg" src="images/Rooms & Suites/OceanSideVilla/Villa1_4.jpg" width="100%" alt=""> -->
                             </a>
                         </div>
                         <div class="col-sm-4 roompics">
@@ -250,7 +241,6 @@
                                     <img class="smallimg" src="<?php echo $data['img_path'] ?>" width="100%" alt="">  
                             
                             <?php } ?>
-                                <!-- <img class="smallimg" src="images/Rooms & Suites/OceanSideVilla/Villa1_5.jpg" width="100%" alt=""> -->
                             </a>
                         </div>
                     </div>
@@ -338,7 +328,6 @@
                                     <img src="<?php echo $data['img_path'] ?>" width="75%"  alt="">  
                             
                             <?php } ?>
-                            <!-- <img src="images/Rooms & Suites/OceanSideVilla/Villa1_6.jpg" width="75%"  alt=""> -->
                         </div>
                     </div>
                 </div>

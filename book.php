@@ -1,7 +1,6 @@
 <?php 
     include_once 'includes/conn_include.php';
 
-    // $memberStatus = 1;
     session_start();
     $member_flag =1;
     if(!isset($_POST['submitmem'])){
@@ -19,7 +18,6 @@
         $_SESSION['memID']=$_POST['id'];
         $memID = $_POST['id'];
         $memPassword = md5($_POST['password']);
-        print_r($_POST);
 
         $sql = "SELECT * FROM members WHERE memID='$memID' and mem_password='$memPassword'";
         $memberresult = mysqli_query ($link, $sql) or die( mysqli_error ($link));
@@ -55,8 +53,7 @@
         if(isset($_POST['book'])){
             
             if(isset($_POST['null_value'])){
-            // print_r("Hello");
-            // print_r($_POST);
+
             if(isset($_SESSION['memID'])){
             $memberID = $_SESSION['memID'];
             $member_room = $_POST['room'];
@@ -89,10 +86,8 @@
         }
         }
 
-//   if(!isset($_POST['null_value'])){ 
         if(isset($_POST['book'])){
-        // $memberStatus = $_POST['invisibleTextBox'];
-            // $member_flag = 0;       
+            
             $name=$_POST['name'];
             $gender = $_POST['gender'];
             $email = $_POST['email'];
@@ -105,7 +100,6 @@
             $checkout = $_POST['checkout'];
             $radioval = $_POST['flexRadioDefault'];
 
-        // print_r($_POST);
 
             if($radioval == "memberno"){
                 
@@ -200,17 +194,8 @@
         </div>
 
         <div class="maincontent">
-            <!-- <?php 
-            // if(isset($_POST['book'])){ ?>
-                <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
-                <strong>Thank You!</strong>We appreciate your enthusiasm.
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            <?php //}
-            ?> -->
             <div class="container">
                 <div class="row">
-          
                   <div class="col-md-12">
                       <div class="container">
                         <div class="row">
@@ -385,8 +370,8 @@
                                          
                                     </div>
 
-                                    <?php //if($memberStatus == 1){
-                                    if(!isset($_POST['id'])){
+                                    <?php
+                                        if(!isset($_POST['id'])){
                                     ?>
 
                                     <h4 class="bookheading" style="margin-top: 5%;">

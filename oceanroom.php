@@ -123,7 +123,6 @@
                                     <img src="<?php echo $data['img_path'] ?>" class="d-block w-100" alt="...">   
                             
                         <?php } ?>
-                        <!-- <img src="images/Rooms & Suites/OceanSideRoom/banner_room.png" class="d-block w-100" alt="..."> -->
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
@@ -192,8 +191,6 @@
                                     <img class="smallimg" src="<?php echo $data['img_path'] ?>" width="100%" alt="">   
                             
                             <?php   } ?>
-                            
-                                <!-- <img class="smallimg" src="images/Rooms & Suites/OceanSideRoom/Room1_1.jpg" width="100%" alt=""> -->
                             </a>
                         </div>
                         <div class="col-sm-4 roompics">
@@ -204,7 +201,6 @@
                                     <img class="smallimg" src="<?php echo $data['img_path'] ?>" width="100%" alt="">   
                             
                             <?php  } ?>
-                                <!-- <img class="smallimg" src="images/Rooms & Suites/OceanSideRoom/Room1_2.jpg" width="100%" alt=""> -->
                             </a>
                         </div>
                         <div class="col-sm-4 roompics">
@@ -215,7 +211,6 @@
                                     <img class="smallimg" src="<?php echo $data['img_path'] ?>" width="100%" alt="">   
                             
                             <?php } ?>
-                                <!-- <img class="smallimg" src="images/Rooms & Suites/OceanSideRoom/Room1_3.jpg" width="100%" alt=""> -->
                             </a>
                         </div>
                     </div>

@@ -29,7 +29,7 @@
     $resultset=array();  
     if(mysqli_num_rows($result)>0){
         while($row = mysqli_fetch_assoc($result)) {
-        //$resultset[]=$row;
+        
             $memberNO[$index] = $row['MemberNo'];
             $memberName[$index] = $row['name'];
             $memberStID[$index] = $row['studentID'];
@@ -48,7 +48,6 @@
             $index++;
         }    
     }
-    // print_r($resultset[1]);
 ?>
 
 <!doctype html>
@@ -92,13 +91,9 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12 text-center">
-                            <!-- <img class="dp" src="images/Team/20201218_185801.png" width="50%" alt=""> -->
-                            <?php 
-                                //while($data = mysqli_fetch_array($sql))
-                                //{?>           
-                                    <img class="dp" src="<?php echo $memberimgPath[$index]; ?>" width="50%" alt="">   
+                                       
+                            <img class="dp" src="<?php echo $memberimgPath[$index]; ?>" width="50%" alt="">   
                             
-                            <?php //} ?>
                         </div>
                     </div>
                     <div class="row">
@@ -106,15 +101,15 @@
                             <div class="row">
                                 <div class="col-sm-12 description">
                                     <h4>
-                                        <!-- Salsabeel Noor Azmi -->
+                                        <!-- Name -->
                                         <?php echo $memberName[$index]; ?>
                                     </h4>
                                     <h6>
-                                        <!-- 18.02.04.037 -->
+                                        <!-- ID -->
                                         <?php echo  $memberStID[$index]; ?>
                                     </h6>
                                     <p>
-                                        <!-- (Back-End Developer) -->
+                                        <!-- Member description -->
                                         <?php echo $memberPost[$index]; ?>
                                     </p>
                                 </div>
@@ -140,114 +135,6 @@
                     </div>
                 </div>
                 <?php } ?>
-                <!-- <div class="col-sm-6">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <h1 class="headingtext">
-                                Member 1
-                            </h1>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 text-center"> -->
-                            <!-- <img class="dp" src="images/Team/20201218_185801.png" width="50%" alt=""> -->
-                            <?php 
-                                //while($data = mysqli_fetch_array($sql))
-                                //{?>           
-                                    <!-- <img class="dp" src="<?php //echo $data['img_path'];  ?>" width="50%" alt="">    -->
-                            
-                            <?php //} ?>
-                        <!-- </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 descriptionbox">
-                            <div class="row">
-                                <div class="col-sm-12 description">
-                                    <h4>
-                                        Salsabeel Noor Azmi
-                                    </h4>
-                                    <h6>
-                                        18.02.04.037
-                                    </h6>
-                                    <p>
-                                        (Back-End Developer)
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row row-cols-3 justify-content-md-center text-center">
-                                <div class="col-md-auto">
-                                    <a href="https://www.facebook.com/profile.php?id=100010067490201" target="_blank">
-                                        <img data-toggle="tooltip" data-placement="bottom" title="Facebook/Salsabeel" src="images/commonimages/facebook.svg" width="50px" alt="">
-                                    </a>
-                                </div>
-                                <div class="col-md-auto">
-                                    <a href="https://www.instagram.com/salsabeelnoor_azmi/" target="_blank">
-                                        <img data-toggle="tooltip" data-placement="bottom" title="Instagram/Salsabeel" src="images/commonimages/instagram.svg" width="50px" alt="">
-                                    </a> 
-                                </div>
-                                <div class="col-md-auto">
-                                    <a href="https://www.discord.com/users/675014297222381579/" target="_blank">
-                                        <img  data-toggle="tooltip" data-placement="bottom" title="Discord/Salsabeel" src="images/commonimages/discord.svg" width="50px" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-                <!-- <div class="col-sm-6">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <h1 class="headingtext">
-                                Member 2
-                            </h1>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 text-center"> -->
-                            <!-- <img class="dp" src="images/Team/IMG_4979-2.jpg" width="48.75%" alt=""> -->
-                            <?php 
-                                //while($data = mysqli_fetch_array($sql1))
-                                //{?>           
-                                    <!-- <img class="dp" src="<?php //echo $data['img_path'];  ?>" width="48.75%" alt="">   -->
-                            <?php //} ?>
-                        </div>
-                    <!-- </div>
-                    <div class="row">
-                        <div class="col-sm-12 descriptionbox">
-                            <div class="row">
-                                <div class="col-sm-12 description">
-                                    <h4>
-                                        Salehin Bin Iqbal
-                                    </h4>
-                                    <h6>
-                                        18.02.04.062
-                                    </h6>
-                                    <p>
-                                        (Front-End Developer)
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row row-cols-3 justify-content-md-center text-center">
-                                <div class="col-md-auto">
-                                    <a href="https://www.facebook.com/salehin.rawna/" target="_blank">
-                                        <img data-toggle="tooltip" data-placement="bottom" title="Facebook/Salehin" src="images/commonimages/facebook.svg" width="50px" alt="">
-                                    </a>
-                                </div>
-                                <div class="col-md-auto">
-                                    <a href="https://www.instagram.com/botskillerbot/" target="_blank">
-                                        <img data-toggle="tooltip" data-placement="bottom" title="Instagram/Salehin" src="images/commonimages/instagram.svg" width="50px" alt="">
-                                    </a> 
-                                </div>
-                                <div class="col-md-auto">
-                                    <a href="https://www.discord.com/users/623566944364134431/" target="_blank">
-                                        <img  data-toggle="tooltip" data-placement="bottom" title="Discord/Salehin" src="images/commonimages/discord.svg" width="50px" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-                
             </div>
         </div>
         <div class="footer">
