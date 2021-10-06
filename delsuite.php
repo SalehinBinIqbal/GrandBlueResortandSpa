@@ -1,3 +1,7 @@
+<?php 
+    include_once 'includes/conn_include.php';
+    include_once 'includes/img_queries.php';    
+?>
 <!doctype html>
 <html lang="en">
 
@@ -113,7 +117,13 @@
             <div id="carouselExampleFade" class="carousel slide carousel-fade topcarousel" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="images/Rooms & Suites/DeluxeSuite/banner_dsuite.png" class="d-block w-100" alt="...">
+                    <?php 
+                            while($data = mysqli_fetch_array($banner_dsuite))
+                                {  ?>           
+                                    <img src="<?php echo $data['img_path']; ?>" class="d-block w-100" alt="...">   
+                            
+                        <?php } ?>
+                        <!-- <img src="images/Rooms & Suites/DeluxeSuite/banner_dsuite.png" class="d-block w-100" alt="..."> -->
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
@@ -163,23 +173,47 @@
                 <div class="container-fluid">
                     <div class="row row-cols-1">
                         <a href="images/Rooms & Suites/DeluxeSuite/Suite1.jpg" data-lightbox="mygallery">
-                            <img src="images/Rooms & Suites/DeluxeSuite/Suite1.jpg" width="100%" alt="">
+                        <?php 
+                            while($data = mysqli_fetch_array($Suite1))
+                                {  ?>           
+                                    <img src="<?php echo $data['img_path']; ?>" width="100%" alt="">   
+                            
+                        <?php } ?>
+                            <!-- <img src="images/Rooms & Suites/DeluxeSuite/Suite1.jpg" width="100%" alt=""> -->
                         </a>
                     </div>
                     <div class="row row-cols-1 allsmallroompics">
                         <div class="col-sm-4 roompics">
                             <a href="images/Rooms & Suites/DeluxeSuite/Suite1_1.jpg" data-lightbox="mygallery">
-                                <img class="smallimg" src="images/Rooms & Suites/DeluxeSuite/Suite1_1.jpg" width="100%" alt="">
+                            <?php 
+                            while($data = mysqli_fetch_array($Suite1_1))
+                                {  ?>           
+                                    <img class="smallimg" src="<?php echo $data['img_path']; ?>" width="100%" alt="">   
+                            
+                            <?php } ?>
+                                <!-- <img class="smallimg" src="images/Rooms & Suites/DeluxeSuite/Suite1_1.jpg" width="100%" alt=""> -->
                             </a>
                         </div>
                         <div class="col-sm-4 roompics">
                             <a href="images/Rooms & Suites/DeluxeSuite/Suite1_2.jpg" data-lightbox="mygallery">
-                                <img class="smallimg" src="images/Rooms & Suites/DeluxeSuite/Suite1_2.jpg" width="100%" alt="">
+                            <?php 
+                            while($data = mysqli_fetch_array($Suite1_2))
+                                {  ?>           
+                                    <img class="smallimg" src="<?php echo $data['img_path']; ?>" width="100%" alt="">   
+                            
+                            <?php } ?>
+                                <!-- <img class="smallimg" src="images/Rooms & Suites/DeluxeSuite/Suite1_2.jpg" width="100%" alt=""> -->
                             </a>
                         </div>
                         <div class="col-sm-4 roompics">
                             <a href="images/Rooms & Suites/DeluxeSuite/Suite1_3.jpg" data-lightbox="mygallery">
-                                <img class="smallimg" src="images/Rooms & Suites/DeluxeSuite/Suite1_3.jpg" width="100%" alt="">
+                            <?php 
+                            while($data = mysqli_fetch_array($Suite1_3))
+                                {  ?>           
+                                    <img class="smallimg" src="<?php echo $data['img_path']; ?>" width="100%" alt="">   
+                            
+                            <?php } ?>
+                                <!-- <img class="smallimg" src="images/Rooms & Suites/DeluxeSuite/Suite1_3.jpg" width="100%" alt=""> -->
                             </a>
                         </div>
                     </div>
@@ -258,7 +292,13 @@
                             </ul>
                         </div>
                         <div class="col-sm-4 text-center">
-                            <img src="images/Rooms & Suites/DeluxeSuite/Suite1_4.jpg" width="75%"  alt="">
+                        <?php 
+                            while($data = mysqli_fetch_array($Suite1_4))
+                                {  ?>           
+                                    <img  src="<?php echo $data['img_path']; ?>" width="75%"  alt="">   
+                            
+                            <?php } ?>
+                            <!-- <img src="images/Rooms & Suites/DeluxeSuite/Suite1_4.jpg" width="75%"  alt=""> -->
                         </div>
                     </div>
                 </div>

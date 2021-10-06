@@ -1,3 +1,75 @@
+<?php 
+  include_once 'includes/conn_include.php';
+  session_start();
+  if(isset($_SESSION['login_memberID'])){
+
+    $memberID1 = $_SESSION['login_memberID'];
+    $query = "SELECT * FROM members WHERE memID= '$memberID1'";
+    $sql = mysqli_query($link,$query);
+
+    $noOfrow = mysqli_num_rows($sql);
+
+    if($noOfrow){
+      $row = mysqli_fetch_assoc($sql);
+      $memberID = $row['memID'];
+      $mem_name1 = $row['mem_name'];
+      $gender1 = $row['gender'];
+      $email1 = $row['email'];
+      $mobile1 = $row['mobile'];
+      $nid1 = $row['nid'];
+      $dateofbirth1 = $row['DateOfBirth'];
+      $nationality1 = $row['nationality'];
+      $room = $row['room'];
+      $lastCheckin = $row['checkin'];
+      $lastCheckout = $row['checkout'];
+      $times_visited = $row['times_visited'];
+      $currPassword = $row['mem_password'];
+    }
+
+    if(isset($_POST['submitmob'])){
+      if(isset($_POST['phone'])){
+        $updatePhone= $_POST['phone'];
+        $update_member_table = "UPDATE members SET mobile = '$updatePhone'  where memID = $memberID1 ";
+        $resultupdate_members = mysqli_query ($link, $update_member_table) or die( mysqli_error ($link));
+        header('location: profile.php');
+      }
+
+    }
+    if(isset($_POST['submitmail'])){
+        if(isset($_POST['email'])){
+          $updateEmail= $_POST['email'];
+          $update_member_table = "UPDATE members SET email = '$updateEmail'  where memID = $memberID1 ";
+          $resultupdate_members = mysqli_query ($link, $update_member_table) or die( mysqli_error ($link));
+          header('location: profile.php');
+        }
+    }
+    if(isset($_POST['submitpassword'])){ 
+      $currPass = $_POST['curpass'];
+        if(isset($currPass)){
+          if(md5($currPass) === $currPassword){
+            $newPass = $_POST['newpass'];
+            $newPass1 = md5($newPass);
+            if($newPass == $_POST['conpass']){
+              $update_member_table = "UPDATE members SET mem_password = '$newPass1'  where memID = $memberID1 ";
+              $resultupdate_members = mysqli_query ($link, $update_member_table) or die( mysqli_error ($link));
+              $successUpdate = 'success';
+            }
+            else{
+              $missmatch = "Password Mismatch";
+            }
+          }
+          else{
+            $wrongCurrPass = "Incorrect Password";
+          }
+        }
+    }
+}
+else{
+  $_SESSION['error_login'] = 'Please Login First';
+  header('location: memberlogin.php');
+}
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -48,7 +120,7 @@
                     <hr class="dropdown-divider">
                   </li>
                 </ul>
-                <a href="memberlogin.php">
+                <a href="logout.php">
                   <button id="logoutbtn" type="button" class="btn btn-danger navtext">Logout <i class="fa fa-sign-out"></i></button>
                 </a>    
               </div>
@@ -58,6 +130,22 @@
       </div>
       
       <div class="maincontent">
+        <?php 
+          if(isset($missmatch) || isset($wrongCurrPass)){ ?>
+            <div class="alert alert-danger  alert-dismissible fade show text-center" role="alert">
+              <strong>Warning!</strong>&nbsp There's been an error while changing your password!
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          <?php }
+        ?>
+        <?php 
+          if(isset($successUpdate)){ ?>
+            <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+              <strong>Well Done!</strong>&nbsp You've successfully updated your password!
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          <?php }
+        ?>
         <div class="container-fluid">
           <div class="container-fluid">
             <div class="container-fluid">
@@ -73,31 +161,31 @@
                           <tbody>
                             <tr>
                               <td class="section">Name:</td>
-                              <td class="value">Otto</td>
+                              <td class="value"><?php echo $mem_name1; ?></td>
                             </tr>
                             <tr>
                               <td class="section">Date of Birth:</td>
-                              <td class="value">10/11/1990</td>
+                              <td class="value"><?php echo  $dateofbirth1; ?></td>
                             </tr>
                             <tr>
                               <td class="section">Gender:</td>
-                              <td class="value">Male</td>
+                              <td class="value"><?php echo  $gender1; ?></td>
                             </tr>
                             <tr>
                               <td class="section">Mobile:</td>
-                              <td class="value">01234567890</td>
+                              <td class="value"><?php echo  $mobile1; ?></td>
                             </tr>
                             <tr>
                               <td class="section">Email:</td>
-                              <td class="value">O@gmail.com</td>
+                              <td class="value"><?php echo  $email1; ?></td>
                             </tr>
                             <tr>
                               <td class="section">NID/Passport:</td>
-                              <td class="value">0000000000</td>
+                              <td class="value"><?php echo  $nid1; ?></td>
                             </tr>
                             <tr>
                               <td class="section">Nationality:</td>
-                              <td class="value">Bangladesh</td>
+                              <td class="value"><?php echo  $nationality1; ?></td>
                             </tr>
                           </tbody>
                         </table>
@@ -117,23 +205,23 @@
                           <tbody>
                             <tr>
                               <td class="section">Member ID:</td>
-                              <td class="value">000000</td>
+                              <td class="value"><?php echo  $memberID; ?></td>
                             </tr>
                             <tr>
                               <td class="section">Times Visited:</td>
-                              <td class="value">10</td>
+                              <td class="value"><?php echo $times_visited; ?></td>
                             </tr>
                             <tr>
                               <td class="section">Last room type:</td>
-                              <td class="value">Ocean Side Villa</td>
+                              <td class="value"><?php echo  $room; ?></td>
                             </tr>
                             <tr>
                               <td class="section">Last Check in:</td>
-                              <td class="value">25/09/2021</td>
+                              <td class="value"><?php echo  $lastCheckin; ?></td>
                             </tr>
                             <tr>
                               <td class="section">Last Check out:</td>
-                              <td class="value">28/09/2021</td>
+                              <td class="value"><?php echo  $lastCheckout; ?></td>
                             </tr>
                           </tbody>
                         </table>
@@ -229,6 +317,14 @@
                 </div>
     
               </form>
+              <?php
+                if(isset($missmatch)){
+                  echo '<p class="txt" style="color: red; margin-top:1%;">'.$missmatch.'</p>';
+                }
+                if(isset($wrongCurrPass)){
+                  echo '<p class="txt" style="color: red;  margin-top:1%;">'.$wrongCurrPass.'</p>';
+                }
+              ?>
             </div>
           </div>
         </div>

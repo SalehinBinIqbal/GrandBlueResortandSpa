@@ -1,3 +1,14 @@
+<?php 
+  include_once 'includes/conn_include.php';
+  $link = mysqli_connect($host,$user,$password,$db);
+
+
+?>
+
+
+
+
+
 <!doctype html>
 <html lang="en">
   <head>

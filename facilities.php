@@ -1,3 +1,11 @@
+<?php 
+        include_once 'includes/conn_include.php';
+        session_start();
+        if(!isset($_SESSION['login_memberID'])){
+            header('location: memberlogin.php');
+        }
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -49,7 +57,7 @@
                                     <hr class="dropdown-divider">
                                 </li>
                             </ul>
-                            <a href="memberlogin.php">
+                            <a href="logout.php">
                                 <button id="logoutbtn" type="button" class="btn btn-danger navtext">Logout <i class="fa fa-sign-out"></i></button>
                             </a>
                         </div>

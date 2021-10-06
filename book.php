@@ -1,3 +1,144 @@
+<?php 
+    include_once 'includes/conn_include.php';
+
+    // $memberStatus = 1;
+    session_start();
+    $member_flag =1;
+    if(!isset($_POST['submitmem'])){
+        $mem_name1 = '';
+        $gender1 = '';
+        $email1 = '';
+        $mobile1 = '';
+        $nid1 = '';
+        $dateofbirth1 = '';
+        $nationality1 = '';  
+    }
+
+    if(isset($_POST['submitmem'])){
+
+        $_SESSION['memID']=$_POST['id'];
+        $memID = $_POST['id'];
+        $memPassword = md5($_POST['password']);
+        print_r($_POST);
+
+        $sql = "SELECT * FROM members WHERE memID='$memID' and mem_password='$memPassword'";
+        $memberresult = mysqli_query ($link, $sql) or die( mysqli_error ($link));
+        if(mysqli_num_rows($memberresult)>0){
+            while($data = mysqli_fetch_assoc($memberresult)) {
+                $memberID = $data['memID'];
+                $mem_name1 = $data['mem_name'];
+                $gender1 = $data['gender'];
+                $email1 = $data['email'];
+                $mobile1 = $data['mobile'];
+                $nid1 = $data['nid'];
+                $dateofbirth1 = $data['DateOfBirth'];
+                $nationality1 = $data['nationality'];
+            }
+            $member_flag =1;           
+        }
+        else{
+            unset($_POST['id']);
+            $memberID = '';
+            $mem_name1 = '';
+            $gender1 = '';
+            $email1 = '';
+            $mobile1 = '';
+            $nid1 = '';
+            $dateofbirth1 = '';
+            $nationality1 = '';  
+            $error = "Invalid Member ID or Password";
+        }
+        
+    }  
+    
+    
+        if(isset($_POST['book'])){
+            
+            if(isset($_POST['null_value'])){
+            // print_r("Hello");
+            // print_r($_POST);
+            if(isset($_SESSION['memID'])){
+            $memberID = $_SESSION['memID'];
+            $member_room = $_POST['room'];
+            $member_checkin = $_POST['checkin'];
+            $member_checkout = $_POST['checkout'];
+
+            $sql = "SELECT * FROM members WHERE memID = $memberID";
+            $memberresult = mysqli_query ($link, $sql) or die( mysqli_error ($link));
+            $noOfrow = mysqli_num_rows($memberresult);
+
+            if($noOfrow){
+                $row = mysqli_fetch_assoc($memberresult);
+                $mem_name1 = $row['mem_name'];
+                $gender1 = $row['gender'];
+                $email1 = $row['email'];
+                $mobile1 = $row['mobile'];
+                $nid1 = $row['nid'];
+                $dateofbirth1 = $row['DateOfBirth'];
+                $nationality1 = $row['nationality'];
+                $visit_number = $row['times_visited'];
+            }
+
+            $memberBooksql = "INSERT INTO books (memberID,memberName,memberGender,memberEmail,memberMobile,memberNid,memberDob,memberNationality,memberRoom,memberCheckin,memberCheckout,memberStatus) VALUES('$memberID','$mem_name1','$gender1','$email1','$mobile1','$nid1','$dateofbirth1','$nationality1','$member_room','$member_checkin','$member_checkout',2)";
+            $resultInsertbooks = mysqli_query ($link, $memberBooksql) or die( mysqli_error ($link));
+
+            $visit_number = $visit_number +1;
+            $update_member_table = "UPDATE members SET room = '$member_room', checkin = '$member_checkin', checkout = '$member_checkout', times_visited = $visit_number where memID = $memberID ";
+            $resultupdate_members = mysqli_query ($link, $update_member_table) or die( mysqli_error ($link));
+            }
+        }
+        }
+
+//   if(!isset($_POST['null_value'])){ 
+        if(isset($_POST['book'])){
+        // $memberStatus = $_POST['invisibleTextBox'];
+            // $member_flag = 0;       
+            $name=$_POST['name'];
+            $gender = $_POST['gender'];
+            $email = $_POST['email'];
+            $phone = $_POST['phone'];
+            $nid = $_POST['nid&psprt'];
+            $dateofbirth = $_POST['dob'];
+            $nationality = $_POST['nationality'];
+            $room = $_POST['room'];
+            $checkin = $_POST['checkin'];
+            $checkout = $_POST['checkout'];
+            $radioval = $_POST['flexRadioDefault'];
+
+        // print_r($_POST);
+
+            if($radioval == "memberno"){
+                
+                $sql = "INSERT INTO books (memberName,memberGender,memberEmail,memberMobile,memberNid,memberDob,memberNationality,memberRoom,memberCheckin,memberCheckout,memberStatus) VALUES('$name','$gender','$email','$phone','$nid','$dateofbirth','$nationality','$room','$checkin','$checkout',1)";
+                $resultInsert = mysqli_query ($link, $sql) or die( mysqli_error ($link));
+                $memberStatus = 1;                                        
+           }
+            
+            if($radioval == "memberyes"){
+            
+                $sql = "INSERT INTO members (mem_name,gender,email,mobile,nid,DateOfBirth,nationality,room,checkin,checkout,mem_password,mem_status) VALUES('$name','$gender','$email','$phone','$nid','$dateofbirth','$nationality','$room','$checkin','$checkout',md5('GB1234'),2)";
+                 
+                if (mysqli_query($link, $sql)) {
+                    $last_id = mysqli_insert_id($link);
+                }
+                $memberBooksql = "INSERT INTO books (memberID,memberName,memberGender,memberEmail,memberMobile,memberNid,memberDob,memberNationality,memberRoom,memberCheckin,memberCheckout,memberStatus) VALUES('$last_id','$name','$gender','$email','$phone','$nid','$dateofbirth','$nationality','$room','$checkin','$checkout',2)";
+                $resultInsertbooks = mysqli_query ($link, $memberBooksql) or die( mysqli_error ($link));
+            }
+            if (!isset($_SESSION)) {
+                session_start();
+            }            
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $_SESSION['postdata'] = $_POST;
+                unset($_POST);
+                header("Location: ".$_SERVER['PHP_SELF']);
+                exit;
+        }
+} 
+?>
+
+
+
+
 <!doctype html>
 <html lang="en">
 
@@ -59,6 +200,14 @@
         </div>
 
         <div class="maincontent">
+            <!-- <?php 
+            // if(isset($_POST['book'])){ ?>
+                <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+                <strong>Thank You!</strong>We appreciate your enthusiasm.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php //}
+            ?> -->
             <div class="container">
                 <div class="row">
           
@@ -81,30 +230,47 @@
                                             <form action="" method="POST">
                                                 <div class="form-group"> 
                                                     <!-- <label class="text" style="float: left; margin-right: 0.5em; transform: translateY(0.45em);">Member ID</label> -->
-                                                    <input style="max-width: 14.5em; float: left; margin-right: 0.5em;" type="text" name="id" placeholder="Member ID" value="" class="form-control" required/>
+                                                    <input style="max-width: 14.5em; float: left; margin-right: 0.5em;" type="text" name="id" placeholder="Member ID" value="<?php if(isset($_POST['submitmem']) && $member_flag == 1 ){echo $memberID;} else { echo '';} ?>" class="form-control" required/>
                                                     <input style="max-width: 14.5em; float: left; margin-right: 0.5em;" type="password" name="password" placeholder="Password" value="" class="form-control" minlength="6" required/>
                                                     <input  name="submitmem" type="submit"  value="Login" class="btn btn-success text"/>
                                                 </div>
                                             </form>
+                                            <?php                                
+                                                if(isset($error)){
+                                                    echo '<p style="color: red ; margin-bottom:0; ">'.$error.'</p>';
+                                                                                 
+                                                }                                                              
+                                             ?>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- <hr style="border-color: black; opacity: 1; margin-bottom: 5%;" class="dropdown-divider"> -->
                                 <form action="" method="POST" id="myForm">
                                     <div style="display: none;">
-                                        <td></td>
+                                    <input type="text" name="null_value" value="<?php if(isset($_POST['book'])){$null_value = "boom"; echo $null_value;} ?>">
+                                            <?php 
+                                            // if(isset($_POST['submitmem'])){
+                                            //     if(mysqli_num_rows($memberresult)>0){
+                                            //         while($data = mysqli_fetch_assoc($memberresult)) { 
+                                            //             $memberStatus = $data['mem_status']; ?> <td>
+                                            //             <?php echo $memberStatus;
+                                            //         }
+                                            //     }
+                                            // }    
+                                            ?>
+                                        </td>
                                     </div>
                                     
           
                                     <div class="form-group mb-3"> 
                                       <label class="txt">Name</label>
-                                      <input type="text" autocomplete="off" name="name" value="" class="form-control frm" required/>
+                                      <input type="text" autocomplete="off" name="name" value="<?php echo $mem_name1; ?>" class="form-control frm" required/>
                                     </div>
                                     
 
                                     <div class="form-group mb-3">
                                         <label for="exampleDataList" class="form-label txt">Gender</label>
-                                        <input class="form-control frmdd" name="gender" list="datalistOptions" pattern="Male|Female|Other" id="exampleDataList" required>
+                                        <input class="form-control frmdd" name="gender" value = "<?php echo $gender1; ?>" list="datalistOptions" pattern="Male|Female|Other" id="exampleDataList" required>
                                         <datalist id="datalistOptions">
                                             <option value="Male">
                                             <option value="Female">
@@ -115,23 +281,23 @@
                         
                                     <div class="form-group mb-3"> 
                                       <label  class="txt">Email</label>
-                                      <input type="email" autocomplete="off"  name="email" value="" class="form-control frm" required/>
+                                      <input type="email" autocomplete="off"  name="email" value="<?php echo $email1; ?>" class="form-control frm" required/>
                                     </div>
                         
                                     <div class="form-group mb-3"> 
                                       <label  class="txt">Mobile Number</label>
-                                      <input type="tel" autocomplete="off" name="phone" value="" class="form-control frm" required>
+                                      <input type="tel" autocomplete="off" name="phone" value="<?php echo $mobile1; ?>" class="form-control frm" required>
                                     </div>
                         
                                     <div class="form-group mb-3"> 
                                         <label  class="txt">NID/Passport No.</label>
-                                        <input type="text" autocomplete="off" name="nid&psprt" value="" class="form-control frm" required>
+                                        <input type="text" autocomplete="off" name="nid&psprt" value="<?php echo $nid1; ?>" class="form-control frm" required>
                                     </div>
 
                                     <div class="form-group mb-3"> 
                                         <label  class="txt">Date of Birth</label>
                                         <div class="input-container">
-                                            <input type="text" autocomplete="off" name="dob" value="" placeholder="MM/DD/YYYY" class="form-control frmdd datepicker" required><i class="fa fa-calendar"></i>
+                                            <input type="text" autocomplete="off" name="dob" value="<?php echo $dateofbirth1; ?>" placeholder="MM/DD/YYYY" class="form-control frmdd datepicker" required><i class="fa fa-calendar"></i>
                                         </div>
                                          
                                     </div>
@@ -140,7 +306,7 @@
 
                                     <div class="form-group mb-3">
                                         <label for="exampleDataList" class="form-label txt">Nationality</label>
-                                        <input class="form-control frmdd" name="nationality" list="datalistOptions1" id="exampleDataList1" required>
+                                        <input class="form-control frmdd" value="<?php echo $nationality1; ?>" name="nationality" list="datalistOptions1" id="exampleDataList1" required>
                                         <datalist id="datalistOptions1">
                                             <option value="Australia">
                                             <option value="Austria">
@@ -219,12 +385,15 @@
                                          
                                     </div>
 
+                                    <?php //if($memberStatus == 1){
+                                    if(!isset($_POST['id'])){
+                                    ?>
+
                                     <h4 class="bookheading" style="margin-top: 5%;">
                                         Membership Information
                                     </h4>
 
                                     <hr style="border-color: black; opacity: 1; border-style:dashed; margin-bottom: 2.5%;" class="dropdown-divider">
-
 
                                     <div class="form-group mb-3"> 
                                         <div class="input-container">
@@ -244,13 +413,19 @@
                                             </label>
                                         </div>
                                          
-                                    </div>
+                                    </div>                            
+                             <?php } ?>
 
                                     
                         
                                     <div class="form-group mb-3"> 
                                       <input name="book" type="submit"  value="Book Now" class="btn btn-outline-primary bookheading" id="sbmt"/>
                                     </div>
+                                    <?php                                
+                                        if(isset($fail_message)){
+                                            echo '<p style="color: red ; margin-bottom:0; ">'.$fail_message.'</p>';
+                                        }                                                              
+                                    ?>
                         
                                 </form>
                             </div>

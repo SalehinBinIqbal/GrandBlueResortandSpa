@@ -1,3 +1,34 @@
+<?php 
+    include_once 'includes/conn_include.php';
+    session_start();
+
+    if(isset($_POST['submit'])){
+        $memID = $_POST['id'];
+        $memPassword = $_POST['password'];
+        
+        $query = "SELECT * FROM members WHERE memID= '$memID'";
+        $sql = mysqli_query($link,$query);
+        
+        if(mysqli_num_rows($sql)>0){
+            $row = mysqli_fetch_assoc( $sql);
+            $memberID = $row['memID'];
+            $mainMemberPassword = $row['mem_password'];          
+            if($memberID == $memID && $mainMemberPassword == md5($memPassword))  {
+                
+                $memberData = $row['memID'];
+                $_SESSION['login_memberID'] = $memberData;
+                header('location: profile.php');
+            }
+            else{
+                $error = "Invalid Member ID or Password";
+            }        
+        }
+        else{
+            $error = "Invalid Member ID or Password";
+        }
+    }
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -41,6 +72,11 @@
                                     <input name="submit" type="submit"  value="Login" class="btn btn-success txt"/>
                                 </div>
                               </form>
+                              <?php 
+                                if(isset($error)){
+                                    echo '<p class="text-center" style="color: red; margin-left:6%; margin-top:1%;">'.$error.'</p>';
+                                }
+                              ?>
                         </div>
                     </div>
                 </div>
